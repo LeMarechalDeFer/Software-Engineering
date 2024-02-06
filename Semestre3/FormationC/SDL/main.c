@@ -65,7 +65,7 @@ int main(int argc, char **argv){
     }
 
     SDL_RenderPresent(renderer);
-    SDL_Delay(3000);
+    SDL_Delay(20000);
 
     if(SDL_RenderClear(renderer) != 0){
         SDL_ExitWithError("Effacement rendu echouee");
