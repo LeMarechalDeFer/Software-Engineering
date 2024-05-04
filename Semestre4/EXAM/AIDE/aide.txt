@@ -1,1 +1,8 @@
 gcc -Wall -Wextra -o main *.c
+
+
+erase = effacer
+vertex = sommets
+edges = arretes/liens
+
+r0main2021

@@ -25,7 +25,7 @@ int main() {
     printf("\n");
 
     // Saisie d'un nouveau graphe 
-    // saisiegraphe();
+    //saisiegraphe();
 
     // Libération de la mémoire
     for (int i = 0; i < ordre; i++) {

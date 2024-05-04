@@ -4,7 +4,6 @@ char **lecturegraphe(int *ordre) {
     FILE *f = fopen("graphe.txt", "r");
     if (!f) {
         perror("Erreur lors de l'ouverture du fichier");
-        
         exit(EXIT_FAILURE);
     }
 
