@@ -4,13 +4,22 @@ char **lecturegraphe(int *ordre) {
     FILE *f = fopen("graphe.txt", "r");
     if (!f) {
         perror("Erreur lors de l'ouverture du fichier");
-        exit(1);
+        
+        exit(EXIT_FAILURE);
     }
 
     fscanf(f, "%d", ordre);
     char **adjacence = (char **)malloc(*ordre * sizeof(char *));
+    if(!adjacence) {
+        perror("Erreur lors de l'allocation de la mémoire");
+        exit(EXIT_FAILURE);
+    }
     for (int i = 0; i < *ordre; i++) {
         adjacence[i] = (char *)calloc(*ordre, sizeof(char));
+        if(!adjacence[i]){
+            perror("Erreur lors de l'allocation de la mémoire");
+            exit(EXIT_FAILURE);
+        }
     }
 
     int i, j;
@@ -74,10 +83,23 @@ void saisiegraphe() {
     scanf("%d", &ordre);
     
     char **adjacence = (char **)malloc(ordre * sizeof(char *));
+    if (!adjacence) {
+    perror("Echec de l'allocation de la mémoire pour la matrice d'adjacence");
+    exit(EXIT_FAILURE);
+}
     for (int i = 0; i < ordre; i++) {
         adjacence[i] = (char *)calloc(ordre, sizeof(char));
+        if (!adjacence[i]) {
+        perror("Echec de l'allocation de la mémoire pour la ligne de la matrice d'adjacence");
+        for (int j = 0; j < i; j++) {
+            free(adjacence[j]);
+        }
+        free(adjacence);
+        exit(EXIT_FAILURE);
     }
-    
+    }
+
+
     int i, j;
     while (1) {
         printf("Entrer un arc sous la forme i j (entrer -1 -1 pour terminer) : ");
