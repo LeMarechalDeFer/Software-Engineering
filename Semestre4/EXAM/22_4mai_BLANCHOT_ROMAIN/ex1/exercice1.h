@@ -1,4 +1,4 @@
-#ifndef __EXERCICE1__H__
+//#ifndef __EXERCICE1__H__
 #define __EXERCICE1__H__
 
 #include <stdio.h>
@@ -7,25 +7,15 @@
 #include <stdbool.h>
 
 
-    /* Définition d'un Noeud (sommet) */
-    typedef struct NodeListElement
-    {
-        int value;
-        struct NodeListElement *next;
-    }NodeListElement, *NodeList;
- 
-    /* Définition d'une liste d'adjacence */
-    typedef struct AdjencyListElement
-    {
-        NodeListElement *begin;
-    }AdjencyListElement, *AdjencyList;
+typedef struct graph {
+    int nombre_de_sommet ;
+    char** matrice_adjacence;
+}graph ;
 
-    /* Définition d'un Graphe */
-    typedef struct GraphElement
-    {
-        bool is_oriented;
-        int nb_vertices;
-        AdjencyList tab_neighbours;
-    }GraphElement, *Graph;
+graph saisiegraphe();
+void enregistrement_graph(graph G);
+int nbchemin2(graph G);
+void affichematrice(graph G);
+void nettoyage_memoire(graph G);
 
-#endif
+//#endif

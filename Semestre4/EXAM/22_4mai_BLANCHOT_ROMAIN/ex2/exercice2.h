@@ -3,29 +3,27 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdbool.h>
 
 
-    /* Définition d'un Noeud (sommet) */
-    typedef struct NodeListElement
-    {
-        int value;
-        struct NodeListElement *next;
-    }NodeListElement, *NodeList;
- 
-    /* Définition d'une liste d'adjacence */
-    typedef struct AdjencyListElement
-    {
-        NodeListElement *begin;
-    }AdjencyListElement, *AdjencyList;
+#define MAX_VERTICES 100  
 
-    /* Définition d'un Graphe */
-    typedef struct GraphElement
-    {
-        bool is_oriented;
-        int nb_vertices;
-        AdjencyList tab_neighbours;
-    }GraphElement, *Graph;
+int visited[MAX_VERTICES]; 
+
+typedef struct node {
+    int vertex;
+    struct node* next;
+} Node;
+
+// Structure pour le graphe
+typedef struct graph {
+    int numVertices;
+    Node** adjLists;  
+} Graph;
+
+Node* createNode(int v);
+void addEdge(Graph* graph, int src, int dest);
+Graph* createGraph(int vertices);
+void DFS(Graph* graph, int vertex) ;
 
 #endif
