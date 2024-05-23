@@ -1,0 +1,8 @@
+﻿  main.c
+D:\Ecoles\ESIEA\Compression\TP1\main.c(92,24): warning C4554: '>>': check operator precedence for possible error; use parentheses to clarify precedence
+D:\Ecoles\ESIEA\Compression\TP1\main.c(96,24): warning C4554: '>>': check operator precedence for possible error; use parentheses to clarify precedence
+D:\Ecoles\ESIEA\Compression\TP1\main.c(99,23): warning C4047: 'function': 'char *' differs in levels of indirection from 'char (*)[8]'
+D:\Ecoles\ESIEA\Compression\TP1\main.c(99,19): warning C4024: '_itoa': different types for formal and actual parameter 2
+D:\Ecoles\ESIEA\Compression\TP1\main.c(111,27): warning C4554: '>>': check operator precedence for possible error; use parentheses to clarify precedence
+D:\Ecoles\ESIEA\Compression\TP1\main.c(85,7): warning C4101: 'current': unreferenced local variable
+  TP1.vcxproj -> D:\Ecoles\ESIEA\Compression\x64\Debug\TP1.exe

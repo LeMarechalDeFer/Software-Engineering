@@ -1,0 +1,2 @@
+Bonjour, comment allez-vous ? Ce programme est un exemple de fichier texte en français.
+Il contient des phrases simples pour tester l'encodage et le décodage RLE.

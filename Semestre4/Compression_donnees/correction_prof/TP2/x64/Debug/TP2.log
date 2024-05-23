@@ -1,0 +1,8 @@
+﻿  main.c
+D:\Ecoles\ESIEA\Compression\TP2\main.c(30,21): warning C4028: formal parameter 1 different from declaration
+D:\Ecoles\ESIEA\Compression\TP2\main.c(50,50): warning C4020: 'strcpy': too many actual parameters
+D:\Ecoles\ESIEA\Compression\TP2\main.c(222,27): warning C4133: 'function': incompatible types - from 'char *' to 'FILE *'
+D:\Ecoles\ESIEA\Compression\TP2\main.c(236,23): warning C4133: 'function': incompatible types - from 'char *' to 'FILE *'
+D:\Ecoles\ESIEA\Compression\TP2\main.c(289,24): warning C4133: 'function': incompatible types - from 'char *' to 'FILE *'
+D:\Ecoles\ESIEA\Compression\TP2\main.c(318,40): warning C4133: 'function': incompatible types - from 'FILE *' to 'char *'
+  TP2.vcxproj -> D:\Ecoles\ESIEA\Compression\x64\Debug\TP2.exe
