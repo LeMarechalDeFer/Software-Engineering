@@ -1,0 +1,26 @@
+Concepts Clés
+Run-Length Encoding (RLE) :
+
+Technique de compression de données simple qui remplace les séquences de caractères répétitifs par une seule instance du caractère suivie du nombre de répétitions.
+Exemple : La chaîne "aaaaabbc" devient "5a2b1c".
+Avantages de RLE :
+
+Facilité d'implémentation et de compréhension.
+Efficace pour les données avec de longues séquences répétitives.
+Inconvénients de RLE :
+
+Inefficace pour les données sans séquences répétitives, pouvant même augmenter la taille du fichier.
+Non adapté aux données avec beaucoup de variations.
+Questions de Cours (4/10)
+Qu'est-ce que la compression RLE ?
+
+RLE est une méthode de compression de données qui réduit les séquences de caractères répétitifs en stockant le caractère et le nombre de répétitions.
+Quand RLE est-il particulièrement efficace ?
+
+RLE est efficace pour les fichiers contenant de longues séquences de caractères identiques, comme les images avec de grandes zones de couleur unie.
+Pourquoi un séparateur est-il parfois nécessaire dans RLE ?
+
+Un séparateur est nécessaire pour éviter les ambiguïtés lors de la décompression, surtout lorsque les nombres de répétitions sont supérieurs à 9.
+Quelles sont les limites de la compression RLE ?
+
+La compression RLE peut augmenter la taille des fichiers avec peu de répétitions et ne convient pas aux données avec beaucoup de variations.
