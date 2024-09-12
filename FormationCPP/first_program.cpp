@@ -24,6 +24,9 @@ buffer = mémoire tempon
 le flush à un cout donc parfois plus interessant \n que endl
 
 buffer lecture d'entrée :
+
+introduction de la porté de la communication d'un code au sein meme d'une fonction avec les blocs de code (contexte) : {}
+bloc enfants et bloc parents 
 - 
 
 */

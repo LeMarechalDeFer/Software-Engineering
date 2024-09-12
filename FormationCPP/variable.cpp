@@ -26,7 +26,9 @@ Prefixe
 
 Possiblité d'utilisé des séparateur pour la lisibilité des grands nombres 12'134'245;
 
-
+difference entre :
+result = data++ donnera l'ancienne valeur de data pour result car post incrementatino
+result = --data pre incrementation
 using namespaces std::literals  permets  de mettre s derrière une variable 
 
 */
