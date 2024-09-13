@@ -16,7 +16,30 @@ Le type de retour seul ne permet pas de différencier les surcharges
 Utilisée pour rendre le code plus flexible et lisible
 
 
+
 */
+
+//enumération (porté globale)
+enum NaturalElement{
+    earth, //1
+    air,   //2 ect car incrementé de 1 par rapport au premier.
+    fire,
+    water
+} ;
+
+// utilisation : NaturalElement ne{fire} 
+
+//énumeration étendue
+enum class NaturalElement{
+    earth, //1
+    air,   //2 ect car incrementé de 1 par rapport au premier.
+    fire,
+    water
+} ;
+
+// utilisation : NaturalElement ne{NaturalElement::fire} 
+
+
 
 // //reférence &
 // int sum(int& a, int& b){
