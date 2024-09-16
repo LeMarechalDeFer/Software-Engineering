@@ -110,6 +110,20 @@
     "typeinfo": "cpp",
     "variant": "cpp",
     "format": "cpp",
-    "text_encoding": "cpp"
-  }
+    "text_encoding": "cpp",
+    "cassert": "cpp",
+    "fstream": "cpp",
+    "iomanip": "cpp",
+    "sstream": "cpp",
+    "chrono": "cpp",
+    "cstring": "cpp",
+    "complex": "cpp",
+    "list": "cpp",
+    "map": "cpp",
+    "set": "cpp",
+    "source_location": "cpp",
+    "valarray": "cpp",
+    "mutex": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }
