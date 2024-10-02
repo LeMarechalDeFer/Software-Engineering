@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "BankAccount",
+      "request": "launch",
+      "mainClass": "BankAccount",
+      "projectName": "Software-Engineering_67cff371"
+    },
+    {
+      "type": "java",
+      "name": "UppercaseName",
+      "request": "launch",
+      "mainClass": "TD1.UppercaseName",
+      "projectName": "Software-Engineering_67cff371"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "TD1.Main",
