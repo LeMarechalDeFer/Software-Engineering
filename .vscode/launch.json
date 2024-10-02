@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Vector3d",
+      "request": "launch",
+      "mainClass": "Vector3d",
+      "projectName": "Software-Engineering_67cff371"
+    },
+    {
+      "type": "java",
       "name": "BankAccount",
       "request": "launch",
       "mainClass": "BankAccount",
