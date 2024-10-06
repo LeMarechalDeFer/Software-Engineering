@@ -125,5 +125,16 @@
     "valarray": "cpp",
     "mutex": "cpp"
   },
-  "C_Cpp.errorSquiggles": "disabled"
+  "C_Cpp.errorSquiggles": "disabled",
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "db hll",
+      "username": "postgres",
+      "database": "newsletter_db"
+    }
+  ]
 }
