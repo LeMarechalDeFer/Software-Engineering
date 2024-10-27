@@ -1,0 +1,15 @@
+services:
+  db:
+    build: .
+    container_name: postgres-cinema-container
+    environment:
+      POSTGRES_DB: cinema
+      POSTGRES_USER: utilisateur
+      POSTGRES_PASSWORD: motdepasse
+    ports:
+      - "5431:5431"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
