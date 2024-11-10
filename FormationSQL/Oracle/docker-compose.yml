@@ -5,8 +5,9 @@ services:
       dockerfile: Dockerfile
     container_name: oracle-database
     ports:
-      - "1522:1521"
-      - "5501:5500"
+      - "1522:1521" # Port Oracle Database
+      - "8080:8080" # Port Oracle APEX
+      - "5501:5500" # Port Oracle EM Express
     environment:
       ORACLE_PWD: "YourPassword123"
       ORACLE_ENABLE_XDB: "true"
