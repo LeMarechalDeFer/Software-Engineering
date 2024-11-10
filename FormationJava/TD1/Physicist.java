@@ -18,7 +18,7 @@ class Physicist {
             this.physicistBirthday = birthday;
         }
         
-        this.physicistCountry = country;
+        this.physicistBirthday = birthday;
     }
 
     public Physicist(String name, java.time.LocalDate birthday){
