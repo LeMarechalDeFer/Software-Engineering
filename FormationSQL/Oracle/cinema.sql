@@ -1,14 +1,77 @@
-
 SPOOL /opt/oracle/scripts/setup/cinema.log;
 
+-- 1. Assurez-vous d'être dans le bon conteneur
+ALTER SESSION SET CONTAINER=FREEPDB1;
+
+-- 2. Créer l'utilisateur uniquement s'il n'existe pas déjà
+BEGIN
+   EXECUTE IMMEDIATE 'CREATE USER cinema_user IDENTIFIED BY strong_password';
+   EXECUTE IMMEDIATE 'GRANT CONNECT, RESOURCE TO cinema_user';
+   EXECUTE IMMEDIATE 'GRANT CREATE SESSION, CREATE TABLE, CREATE VIEW, CREATE SEQUENCE, CREATE PROCEDURE TO cinema_user';
+   EXECUTE IMMEDIATE 'ALTER USER cinema_user QUOTA UNLIMITED ON USERS';
+EXCEPTION
+   WHEN OTHERS THEN
+      -- Ignorer l'erreur si l'utilisateur existe déjà
+      IF SQLCODE != -01920 THEN
+         RAISE;
+      END IF;
+END;
+/
+
+-- 3. Se connecter à l'utilisateur nouvellement créé
+CONNECT cinema_user/strong_password@FREEPDB1
+
+-- 4. Assurez-vous d'utiliser le bon schéma
+ALTER SESSION SET CURRENT_SCHEMA = cinema_user;
 
 -- Suppression des tables si elles existent déjà
-DROP TABLE Seance CASCADE CONSTRAINTS;
-DROP TABLE Salle CASCADE CONSTRAINTS;
-DROP TABLE Role CASCADE CONSTRAINTS;
-DROP TABLE Film CASCADE CONSTRAINTS;
-DROP TABLE Cinema CASCADE CONSTRAINTS;
-DROP TABLE Artiste CASCADE CONSTRAINTS;
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Seance CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        NULL;
+END;
+/
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Salle CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        NULL;
+END;
+/
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Role CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        NULL;
+END;
+/
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Film CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        NULL;
+END;
+/
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Cinema CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        NULL;
+END;
+/
+
+BEGIN
+    EXECUTE IMMEDIATE 'DROP TABLE Artiste CASCADE CONSTRAINTS';
+EXCEPTION
+    WHEN OTHERS THEN
+        NULL;
+END;
+/
 
 -- Création des tables
 CREATE TABLE Artiste ( 

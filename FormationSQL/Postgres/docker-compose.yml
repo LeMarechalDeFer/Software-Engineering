@@ -9,7 +9,11 @@ services:
     ports:
       - "5431:5431"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+      - pgwal:/var/lib/postgresql/wal
+      - backups:/backups
 
 volumes:
-  postgres_data:
+  pgdata:
+  pgwal:
+  backups:

@@ -1,9 +1,11 @@
 FROM container-registry.oracle.com/database/free:latest
 
 # Copie du fichier SQL dans le conteneur
-COPY init-config.sql /opt/oracle/scripts/setup/
+
 COPY cinema.sql /opt/oracle/scripts/setup/
-COPY run-sql.sh /opt/oracle/scripts/setup/
+COPY cinema-init.sh /opt/oracle/scripts/setup/
+COPY .env /opt/oracle/scripts/setup/
+
 
 # # Ajout des permissions via l'utilisateur root
 # USER root

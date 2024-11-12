@@ -1,5 +1,7 @@
 SPOOL /opt/oracle/scripts/setup/init-config.log;
 
+ALTER SESSION SET CONTAINER=CDB$ROOT;
+
 -- Activation du port HTTP pour APEX
 exec dbms_xdb_config.sethttpport(8080);
 
@@ -10,4 +12,9 @@ exec dbms_xdb_config.sethttpsport(5500);
 commit;
 
 SPOOL OFF;
--- fonctionne pas pour le moment
+-- dois être en tant que SYSDBA
+
+
+
+
+
