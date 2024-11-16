@@ -1,0 +1,11 @@
+
+
+-- SYS doit créer les séquences suivantes
+
+-- Séquences pour différents objets
+CREATE SEQUENCE user_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE booking_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE room_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE payment_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE invoice_seq START WITH 1 INCREMENT BY 1;
+
