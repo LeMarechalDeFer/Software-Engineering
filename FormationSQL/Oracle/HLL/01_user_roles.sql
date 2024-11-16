@@ -3,12 +3,6 @@
 CREATE USER hotel_app IDENTIFIED by "3X?c5K/w6E3d%R{x7u" ;
 GRANT CONNECT, SELECT, INSERT, UPDATE, DELETE, EXECUTE ;
 
--- donner accès au séquences
-GRANT SELECT ON user_seq TO hotel_app;
-GRANT SELECT ON booking_seq TO hotel_app;
-GRANT SELECT ON room_seq TO hotel_app;
-GRANT SELECT ON payment_seq TO hotel_app;
-GRANT SELECT ON invoice_seq TO hotel_app;
 
 -- on utilisera NEXTVAL pour les séquences dans les futures insertions tq:
 -- INSERT INTO users (id, name, email)
@@ -21,8 +15,7 @@ AUDIT SESSION BY hotel_app;
 AUDIT SESSION BY hotel_app WHENEVER NOT SUCCESSFUL;
 
 
-AUDIT SELECT ON user_seq BY hotel_app;
--- ...ajouter les autres séquences
+
 
 -- mettre un revok ou non par defaut ?
 -- REVOKE CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SEQUENCE, CREATE TRIGGER FROM hotel_app;
