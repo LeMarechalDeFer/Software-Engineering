@@ -1,4 +1,0 @@
--- -- Création des index pour optimiser les requêtes
--- CREATE INDEX idx_client_email ON clients(email);
--- CREATE INDEX idx_room_status ON rooms(status);
--- CREATE INDEX idx_reservation_dates ON reservations(check_in, check_out);

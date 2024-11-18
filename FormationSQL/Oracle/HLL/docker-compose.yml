@@ -16,3 +16,6 @@ services:
 
 volumes:
   db_data:
+
+
+# docker exec -it oracle-database sqlplus "sys/YourPassword123@//localhost:1521/FREEPDB1 as sysdba"

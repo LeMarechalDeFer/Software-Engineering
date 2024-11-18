@@ -1,0 +1,14 @@
+CREATE OR REPLACE TRIGGER grant_privileges_on_new_objects
+AFTER CREATE ON HOTEL_ADMIN.SCHEMA
+BEGIN
+  -- Pour les nouvelles tables
+  IF ORA_DICT_OBJ_TYPE = 'TABLE' THEN
+    EXECUTE IMMEDIATE 'GRANT SELECT, INSERT, UPDATE, DELETE ON HOTEL_ADMIN.' || ORA_DICT_OBJ_NAME || ' TO hotel_app';
+  END IF;
+
+  -- Pour les nouvelles procédures
+  IF ORA_DICT_OBJ_TYPE = 'PROCEDURE' THEN
+    EXECUTE IMMEDIATE 'GRANT EXECUTE ON HOTEL_ADMIN.' || ORA_DICT_OBJ_NAME || ' TO hotel_app';
+  END IF;
+END;
+/
