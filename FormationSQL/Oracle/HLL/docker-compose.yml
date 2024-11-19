@@ -9,10 +9,15 @@ services:
       - "8080:8080" # Port Oracle APEX
       - "5501:5500" # Port Oracle EM Express
     environment:
+      # ORACLE_SID: "ORCLCDB" # nom par defaut de la db
+      # ORACLE_PDB: "FREEPDB1" # nom par defaut de la db
       ORACLE_PWD: "YourPassword123" # crer le mdp de SYS et de SYSTEM
-      ORACLE_ENABLE_XDB: "true"
+      ORACLE_ENABLE_XDB: "true" # enable Oracle XML DB (XDB) pour APEX
+      #ORACLE_CHARACTERSET: "AL32UTF8" # UTF-8 choix par defaut
+      DISPLAY: ":0"
     volumes:
       - db_data:/opt/oracle/oradata
+      - /tmp/.X11-unix:/tmp/.X11-unix # pour utiliser l'interface graphique de dbca
 
 volumes:
   db_data:

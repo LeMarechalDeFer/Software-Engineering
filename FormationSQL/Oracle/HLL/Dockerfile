@@ -1,7 +1,7 @@
 FROM container-registry.oracle.com/database/free:latest
 
 
-
+COPY 01_user_roles.sql /opt/oracle/scripts/setup/
 
 # Copie du fichier SQL dans le conteneur
 
