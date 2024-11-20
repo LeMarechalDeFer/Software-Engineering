@@ -1,3 +1,7 @@
+CONNECT / AS SYSDBA;
+ALTER SESSION SET CONTAINER = FREEPDB1;
+
+
 BEGIN
   FOR t IN (SELECT table_name FROM all_tables WHERE owner = 'HOTEL_ADMIN') LOOP
     EXECUTE IMMEDIATE 'GRANT SELECT, INSERT, UPDATE, DELETE ON hotel_admin.' || t.table_name || ' TO hotel_app';
