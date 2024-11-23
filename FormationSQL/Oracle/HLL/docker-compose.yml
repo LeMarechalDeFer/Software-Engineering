@@ -8,11 +8,14 @@ services:
       - "1521:1521" # Port Oracle Database
       - "8080:8080" # Port Oracle APEX
       - "5501:5500" # Port Oracle EM Express
+      - "8443:8443" # Port HTTPS pour ORDS
     environment:
       # ORACLE_SID: "ORCLCDB" # nom par defaut de la db
       # ORACLE_PDB: "FREEPDB1" # nom par defaut de la db
       ORACLE_PWD: "YourPassword123" # crer le mdp de SYS et de SYSTEM
       ORACLE_ENABLE_XDB: "true" # enable Oracle XML DB (XDB) pour APEX
+      APEX_ADMIN_EMAIL: "admin@example.com" # Email de l'administrateur APEX
+      APEX_ADMIN_PASSWORD: "AdminPassword123" # Mot de passe de l'admin APEX
       #ORACLE_CHARACTERSET: "AL32UTF8" # UTF-8 choix par defaut
       DISPLAY: ":0"
     volumes:
