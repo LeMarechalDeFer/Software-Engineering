@@ -1,29 +1,113 @@
+# services:
+#   oracle-db:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: oracle-database
+#     ports:
+#       - "1521:1521" # Port Oracle Database
+#       - "8080:8080" # Port Oracle APEX
+#       - "5501:5500" # Port Oracle EM Express
+#       - "8443:8443" # Port HTTPS pour ORDS
+#     environment:
+#       # ORACLE_SID: "ORCLCDB" # nom par defaut de la db
+#       # ORACLE_PDB: "FREEPDB1" # nom par defaut de la db
+#       ORACLE_PWD: "YourPassword123" # crer le mdp de SYS et de SYSTEM
+#       ORACLE_ENABLE_XDB: "true" # enable Oracle XML DB (XDB) pour APEX
+#       APEX_ADMIN_EMAIL: "admin@example.com" # Email de l'administrateur APEX
+#       APEX_ADMIN_PASSWORD: "AdminPassword123" # Mot de passe de l'admin APEX
+#       #ORACLE_CHARACTERSET: "AL32UTF8" # UTF-8 choix par defaut
+#       DISPLAY: ":0"
+#     volumes:
+#       - db_data:/opt/oracle/oradata
+#       - /tmp/.X11-unix:/tmp/.X11-unix # pour utiliser l'interface graphique de dbca
+
+# volumes:
+#   db_data:
+
+
+# # docker exec -it oracle-database sqlplus "sys/YourPassword123@//localhost:1521/FREEPDB1 as sysdba"
+
+
 services:
-  oracle-db:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: oracle-database
+  db:
+    image: container-registry.oracle.com/database/free:latest
+    hostname: database
     ports:
-      - "1521:1521" # Port Oracle Database
-      - "8080:8080" # Port Oracle APEX
-      - "5501:5500" # Port Oracle EM Express
-      - "8443:8443" # Port HTTPS pour ORDS
+      - 1522:1521
+      - 5501:5500
     environment:
-      # ORACLE_SID: "ORCLCDB" # nom par defaut de la db
-      # ORACLE_PDB: "FREEPDB1" # nom par defaut de la db
-      ORACLE_PWD: "YourPassword123" # crer le mdp de SYS et de SYSTEM
-      ORACLE_ENABLE_XDB: "true" # enable Oracle XML DB (XDB) pour APEX
-      APEX_ADMIN_EMAIL: "admin@example.com" # Email de l'administrateur APEX
-      APEX_ADMIN_PASSWORD: "AdminPassword123" # Mot de passe de l'admin APEX
-      #ORACLE_CHARACTERSET: "AL32UTF8" # UTF-8 choix par defaut
-      DISPLAY: ":0"
+      - ORACLE_PWD=pwd
+      - ORACLE_CHARACTERSET=AL32UTF8
     volumes:
+      # - ./oracle_oradata/:/opt/oracle/oradata
+      - ./oracle_startup/:/opt/oracle/scripts/startup
+      - ./oracle_setup/:/opt/oracle/scripts/setup
       - db_data:/opt/oracle/oradata
-      - /tmp/.X11-unix:/tmp/.X11-unix # pour utiliser l'interface graphique de dbca
+  apex:
+    image: container-registry.oracle.com/database/ords-developer:latest
+    ports:
+      - 8181:8181
+    volumes:
+      - ./ords_secrets/:/opt/oracle/variables
+      - ./ords_config/:/etc/ords/config/
+    depends_on:
+      db:
+        condition: service_healthy
 
 volumes:
   db_data:
 
+# docker exec -it hll-apex-1 bash
+# ords --config /etc/ords/config install
 
-# docker exec -it oracle-database sqlplus "sys/YourPassword123@//localhost:1521/FREEPDB1 as sysdba"
+# http://localhost:8181/ords/
+
+# Workspace: internal
+# User:      ADMIN
+# Password:  Welcome_1
+
+
+# docker exec -it hll-db-1 sqlplus system/pwd@//localhost:1521/FREEPDB1
+
+# si on clear ords_config le tuto recommande CONN_STRING="sys/pwd@database:1521/FREEPDB1" dans ords_secrets/conn_string.txt
+# et de lancer ords --config /etc/ords/config install
+
+
+
+#         .
+# ├── backup
+# │   └── backup-rman.sh
+# ├── configs
+# │   ├── oracle_oradata
+# │   ├── oracle_setup
+# │   ├── ords_config
+# │   └── ords_secrets
+# ├── docker
+# │   ├── Dockerfile
+# │   └── docker-compose.yml
+# ├── scripts
+# │   ├── 01_setup
+# │   │   ├── 01_user_roles.sql
+# │   │   └── 02_tables.sql
+# │   ├── 02_data
+# │   │   └── 03_seed_data.sql
+# │   ├── 03_views_procedures
+# │   │   ├── 03_views.sql
+# │   │   └── 04_procedures_and_functions.sql
+# │   ├── 04_configuration
+# │   │   ├── 05_parameters_and_config.sql
+# │   │   ├── grant_trigger.sql
+# │   │   ├── grant_existing_privileges.sql
+# │   │   └── verification.sql
+# │   └── 05_jobs_and_automation
+# │       └── 09_jobs_and_automation.sql
+# ├── startup
+# │   ├── db-init.sh
+# │   └── oracle_startup
+# └── ...
+
+
+
+# attention a ne pas confondre https://container-registry.oracle.com/ords/ocr/ba/database/ords-developer
+# avec https://container-registry.oracle.com/ords/ocr/ba/database/ords

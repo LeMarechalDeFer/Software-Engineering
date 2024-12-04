@@ -5,9 +5,6 @@ COPY 01_user_roles.sql /opt/oracle/scripts/setup/
 COPY 02_tables.sql /opt/oracle/scripts/setup/
 COPY grant_existing_privileges.sql /opt/oracle/scripts/setup/
 
-COPY unattended_apex_install_23c.sh /home/oracle/
-
-# COPY 00_start_apex_ords_installer.sh /opt/oracle/scripts/startup/
 COPY db-init.sh /opt/oracle/scripts/startup/
 
 # Copie du fichier SQL dans le conteneur
