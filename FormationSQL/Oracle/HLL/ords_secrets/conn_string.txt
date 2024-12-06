@@ -1,0 +1,1 @@
+CONN_STRING="sys/pwd@database:1521/FREEPDB1"

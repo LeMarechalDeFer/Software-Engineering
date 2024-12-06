@@ -3,9 +3,9 @@ FROM container-registry.oracle.com/database/free:latest
 
 COPY 01_user_roles.sql /opt/oracle/scripts/setup/
 COPY 02_tables.sql /opt/oracle/scripts/setup/
-# COPY grant_trigger.sql /opt/oracle/scripts/setup/
 COPY grant_existing_privileges.sql /opt/oracle/scripts/setup/
 
+COPY db-init.sh /opt/oracle/scripts/startup/
 
 # Copie du fichier SQL dans le conteneur
 
